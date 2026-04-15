@@ -7,6 +7,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env: # Definimos las variables aquí para todo el job
+      API_PORT: 3001
+      FRONTEND_PORT: 9090
+      NODE_ENV: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
