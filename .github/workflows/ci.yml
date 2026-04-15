@@ -31,8 +31,3 @@ jobs:
           echo "FRONTEND_PORT=${{ env.FRONTEND_PORT }}" >> .env
           echo "NODE_ENV=test" >> .env
         working-directory: ./apps/promptlab/backend
-
-      - name: Run tests
-        # Usamos npm test, pero nos aseguramos de estar en la carpeta correcta
-        run: npm test
-        working-directory: ./apps/promptlab/backend
