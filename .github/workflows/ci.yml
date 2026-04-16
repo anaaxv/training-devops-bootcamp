@@ -36,6 +36,9 @@ jobs:
     needs: [test, lint]
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Create data directory
+        run: mkdir -p apps/promptlab/backend/data
 
       - name: Build API image
         uses: docker/build-push-action@v5
