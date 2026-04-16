@@ -7,27 +7,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    # Eliminamos NODE_ENV: production de aquí arriba para que instale todo
-    env:
-      API_PORT: 3001
-      FRONTEND_PORT: 9090
-    
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm' # Tip extra: acelera tus pipelines guardando la caché de npm
-          cache-dependency-path: ./apps/promptlab/backend/package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
         working-directory: ./apps/promptlab/backend
-
-      - name: Create .env file
-        run: |
-          echo "API_PORT=${{ env.API_PORT }}" >> .env
-          echo "FRONTEND_PORT=${{ env.FRONTEND_PORT }}" >> .env
-          echo "NODE_ENV=test" >> .env
+      - run: mkdir -p data
         working-directory: ./apps/promptlab/backend
+      - run: npm test
+        working-directory: ./apps/promptlab/backend
+        env:
+          DB_PATH: /tmp/promptlab-ci.db
