@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create data directoryy
+      - name: Create data directory
         run: mkdir -p apps/promptlab/backend/data
       
       - name: Login to GHCR
