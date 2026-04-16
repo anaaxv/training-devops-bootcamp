@@ -17,3 +17,6 @@ Thumbs.db
 
 # PromptLab
 apps/promptlab/backend/data/promptlab.db
+
+#Back up de mysql:
+mysql_backup.tar.gz
